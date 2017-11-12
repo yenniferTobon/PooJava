@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.Usuario;
-import static models.Usuario.usuarios;
+import models.Usuario1;
+import static models.Usuario1.usuarios;
    
 
 @WebServlet(urlPatterns = {"/AdminUsuarios"})
@@ -22,9 +22,9 @@ public class AdminUsuarios extends HttpServlet {
             throws ServletException, IOException {   
         
         HttpSession session = request.getSession();         
-        List<Usuario> Usuarios= new ArrayList<Usuario>();         
+        List<Usuario1> Usuarios= new ArrayList<Usuario1>();         
         if(null != session.getAttribute("Usuarios")){
-            usuarios=(ArrayList<Usuario>) session.getAttribute("Usuarios");
+            usuarios=(ArrayList<Usuario1>) session.getAttribute("Usuarios");
         }
         
         request.setAttribute("usuarios", usuarios);         
@@ -36,14 +36,14 @@ public class AdminUsuarios extends HttpServlet {
            throws ServletException, IOException {  
        
        HttpSession session = request.getSession();        
-       List<Usuario> usuarios = new ArrayList<Usuario>();
+       List<Usuario1> Usuarios = new ArrayList<Usuario1>();
        if(null != session.getAttribute("Usuarios")){
-           usuarios=(ArrayList<Usuario>) session.getAttribute("Usuarios");
+           usuarios=(ArrayList<Usuario1>) session.getAttribute("Usuarios");
        }
        int id = Integer.parseInt(request.getParameter("id"));
        String name = request.getParameter("name");
        int price = Integer.parseInt(request.getParameter("price")); 
-       Usuario p = new Usuario(id,name,price);
+       Usuario1 p = new Usuario1(id,name,price);
        usuarios.add(p);
        
        session.setAttribute("Usuarios", usuarios);
