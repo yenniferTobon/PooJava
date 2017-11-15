@@ -7,6 +7,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.Administrador;
+import models.Participante;
+import models.Usuario;
 
 /**
  *
@@ -35,7 +39,24 @@ public class Login extends HttpServlet {
        HttpSession session = request.getSession();
 
         String correo = (request.getParameter("correo"));
-        String contrasena = (request.getParameter("Contrasena"));        
+        String contrasena = (request.getParameter("Contrasena"));   
+        ArrayList<Participante> participantes = (ArrayList<Participante>) session.getAttribute("participantes");
+        ArrayList<Administrador> administradores = (ArrayList<Administrador>) session.getAttribute("administradores");
+        
+        if(participantes !=null)
+        {
+            for(Participante part: participantes) 
+            {
+                if(part.getCorreo().equals(correo) && part.getContrasena().equals(contrasena))
+                {
+                 RequestDispatcher view = request.getRequestDispatcher("Home.jsp");
+                 view.forward(request, response);
+                }
+            } 
+        }
+        
+      RequestDispatcher view = request.getRequestDispatcher("Home.jsp");
+      view.forward(request, response);   
    }
 }  
   

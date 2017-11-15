@@ -15,6 +15,7 @@ public class Usuario {
     private String correo;
     private String contrasena;
     public static List<Usuario> usuarios = new ArrayList<>();
+ 
     
 
     public Usuario(String correo, String contrasena) throws IOException{

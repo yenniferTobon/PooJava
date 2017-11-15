@@ -16,17 +16,19 @@ public class Participante extends Usuario {
 
     private String nombre;
     private long documento;
-    private short edad;
-    private char genero;
+    private int edad;
+    private String genero;
 
    
-    public Participante(String contrasena, String correo, String nombre, long documento, short edad, char genero) throws IOException {
+    public Participante(String contrasena, String correo, String nombre, long documento, int edad, String genero) throws IOException {
         super(correo, contrasena);
         this.nombre = nombre;
         this.documento = documento;
         this.edad = edad;
         this.genero = genero;
     }
+
+   
 
     public String getNombre() {
         return nombre;
@@ -44,19 +46,19 @@ public class Participante extends Usuario {
         this.documento = documento;
     }
 
-    public short getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(short edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
-    public char getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(char genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
